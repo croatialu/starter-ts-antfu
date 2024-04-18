@@ -2,28 +2,27 @@
   "name": "pkg-placeholder",
   "type": "module",
   "version": "0.0.0",
-  "packageManager": "pnpm@9.4.0",
+  "packageManager": "bun@1.1.2",
   "description": "_description_",
-  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "author": "Croatia Lu <wuli.croatia@foxmail.com>",
   "license": "MIT",
-  "funding": "https://github.com/sponsors/antfu",
-  "homepage": "https://github.com/antfu/pkg-placeholder#readme",
+  "funding": "https://github.com/sponsors/croatialu",
+  "homepage": "https://github.com/croatialu/pkg-placeholder#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/antfu/pkg-placeholder.git"
+    "url": "git+https://github.com/croatialu/pkg-placeholder.git"
   },
-  "bugs": "https://github.com/antfu/pkg-placeholder/issues",
+  "bugs": "https://github.com/croatialu/pkg-placeholder/issues",
   "keywords": [],
   "sideEffects": false,
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.js"
     }
   },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "typesVersions": {
     "*": {
@@ -37,12 +36,12 @@
     "dist"
   ],
   "scripts": {
-    "build": "unbuild",
-    "dev": "unbuild --stub",
+    "build": "bun run ./scripts/build.ts",
+    "dev": "bun run build --watch",
     "lint": "eslint .",
     "prepublishOnly": "nr build",
     "release": "bumpp && npm publish",
-    "start": "esno src/index.ts",
+    "start": "bun run --watch ./src/index.ts",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks"
@@ -58,6 +57,8 @@
     "lint-staged": "^15.2.7",
     "pnpm": "^9.4.0",
     "rimraf": "^5.0.8",
+    "@types/bun": "^1.1.0",
+    "bun-plugin-dts": "^0.2.3",
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.5.3",
     "unbuild": "^2.0.0",
@@ -65,7 +66,7 @@
     "vitest": "^1.6.0"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
+    "pre-commit": "bunx lint-staged"
   },
   "lint-staged": {
     "*": "eslint --fix"
