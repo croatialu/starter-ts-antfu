@@ -16,13 +16,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-
-      - name: Set node
-        uses: actions/setup-node@v3
-        with:
-          node-version: lts/*
+      - name: Use bun
+        uses: oven-sh/setup-bun@v1
 
       - run: npx changelogithub
         env:
